@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+	<meta charset="UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
+	<meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+	<title>FDF JS</title>
+	<meta name="description" content="Project fil de fer en javascript" />
+	<meta name="keywords" content="transition, off-canvas, navigation, effect, 3d, css3, smooth" />
+	<meta name="author" content="Martin donadieu fdf v0-3" />
+	<link rel="shortcut icon" href="../favicon.ico">
+	<link rel="stylesheet" type="text/css" href="css/normalize.css" />
+	<link rel="stylesheet" type="text/css" href="css/demo.css" />
+	<link rel="stylesheet" type="text/css" href="css/icons.css" />
+	<link rel="stylesheet" type="text/css" href="css/component.css" />
+	<script src="js/vendor/modernizr.custom.js"></script>
+	<script src="js/threejs/three69.min.js"></script>
+	<script src="js/threejs/avanced/controls/OrbitControls.js"></script>
+	<script src="js/threex-v0/THREEx.WindowResize.js"></script>
+</head>
+<body>
+	<div id="st-container" class="st-container">
+
+		<nav class="st-menu st-effect-11" id="menu-11">
+			<h2 class="icon icon-lab">Upload File</h2>
+			<ul>
+				<li><a class="icon icon-data" href="#">Data</a></li>
+				<li><textarea rows="8" cols="34" id = "filefdf">
+0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0
+0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0
+0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0
+0  0  0 50,0xFF2020 50,0xFF2020  0  0  0  0  0  0  0 50,0xFF2020 50,0xFF2020 50,0xFF2020  0  0  0  0  0
+0  0  0 50,0xFF2020 50,0xFF2020  0  0  0  0  0  0  0 50,0xFF2020 50,0xFF2020 50,0xFF2020 50,0xFF2020  0  0  0  0
+0  0  0 50,0xFF2020 50,0xFF2020  0  0  0  0  0  0 50,0xFF2020 50,0xFF2020  0 50,0xFF2020 50,0xFF2020 50,0xFF2020  0  0  0
+0  0  0 50,0xFF2020 50,0xFF2020  0  0  0  0  0  0 50,0xFF2020 50,0xFF2020  0  0 50,0xFF2020 50,0xFF2020  0  0  0
+0  0  0 50,0xFF2020 50,0xFF2020  0  0  0  0  0  0 50,0xFF2020 50,0xFF2020  0  0 50,0xFF2020 50,0xFF2020  0  0  0
+0  0  0 50,0xFF2020 50,0xFF2020  0  0  0  0  0  0  0  0  0  0 50,0xFF2020 50,0xFF2020  0  0  0
+0  0  0 50,0xFF2020 50,0xFF2020 50,0xFF2020 50,0xFF2020 50,0xFF2020  0  0  0  0  0  0 50,0xFF2020 50,0xFF2020 50,0xFF2020  0  0  0
+0  0  0 50,0xFF2020 50,0xFF2020 50,0xFF2020 50,0xFF2020 50,0xFF2020  0  0  0  0  0 50,0xFF2020 50,0xFF2020 50,0xFF2020  0  0  0  0
+0  0  0 50,0xFF2020 50,0xFF2020 50,0xFF2020 50,0xFF2020 50,0xFF2020  0  0  0  0 50,0xFF2020 50,0xFF2020 50,0xFF2020  0  0  0  0  0
+0  0  0  0  0 50,0xFF2020 50,0xFF2020  0  0  0  0 50,0xFF2020 50,0xFF2020 50,0xFF2020  0  0  0  0  0  0
+0  0  0  0  0 50,0xFF2020 50,0xFF2020  0  0  0  0 50,0xFF2020 50,0xFF2020  0  0  0  0  0  0  0
+0  0  0  0  0 50,0xFF2020 50,0xFF2020  0  0  0  0 50,0xFF2020 50,0xFF2020 50,0xFF2020 50,0xFF2020 50,0xFF2020 50,0xFF2020  0  0  0
+0  0  0  0  0 50,0xFF2020 50,0xFF2020  0  0  0  0 50,0xFF2020 50,0xFF2020 50,0xFF2020 50,0xFF2020 50,0xFF2020 50,0xFF2020  0  0  0
+0  0  0  0  0 50,0xFF2020 50,0xFF2020  0  0  0  0 50,0xFF2020 50,0xFF2020 50,0xFF2020 50,0xFF2020 50,0xFF2020 50,0xFF2020  0  0  0
+0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0
+0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0
+0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0
+				</textarea></li>
+				<li><button class="codrops-top clearfix" onclick="deletefdf();renderfdf();update()">Rendu FDF</button></li>
+				<li><button class="codrops-top clearfix" onclick="deletefdf();update()">Delete FDF</button></li>
+				<!--<li><a class="icon icon-location" href="#">Location</a></li>
+				<li><a class="icon icon-study" href="#">Study</a></li>
+				<li><a class="icon icon-photo" href="#">Collections</a></li>
+				<li><a class="icon icon-wallet" href="#">Credits</a></li>-->
+			</ul>
+		</nav>
+
+		<!-- content push wrapper -->
+		<div class="st-pusher">
+			<div class="st-content"><!-- this is the wrapper for the content -->
+				<div class="st-content-inner"><!-- extra div for emulating position:fixed of the menu -->
+					<!-- Top Navigation -->
+					<div class="codrops-top clearfix" id="st-trigger-effects">
+						<button data-effect="st-effect-11">Menu</button>
+					</div>
+					<header class="codrops-header">
+						<h1>Fil de fer en Javascript <span>par Martin DONADIEU</span></h1>
+					</header>
+					<div class="main clearfix" >
+						<div id="container"></div>
+						<div id="ThreeJS" style="z-index: 1; position: absolute; left:0px; top:35px" ></div>
+					</div><!-- /main -->
+				</div><!-- /st-content-inner -->
+			</div><!-- /st-content -->
+		</div><!-- /st-pusher -->
+	</div><!-- /st-container -->
+	<script src="js/vendor/classie.js"></script>
+	<script src="js/vendor/sidebarEffects.js"></script>
+	<script type="text/javascript" src="js/main.js"></script> 
+
+</body>
+</html>
