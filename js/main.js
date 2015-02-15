@@ -51,7 +51,6 @@ function hexToRGB(hex){
 	G = parseInt(hex.slice(2,4), 16),
 	B = parseInt(hex.slice(4,6), 16);
 
-	//console.log("{" + R + "," + G + "," + B + "}");
 	if (R === "NaN" || G === "NaN" || B === "NaN")
 		console.log("nanisme");
 	R = (R === "NaN") ? 0: R;
@@ -61,9 +60,9 @@ function hexToRGB(hex){
 }
 
 function add_positions (positions, u, xFact, yFact, j, i, z) {
-	positions[ u * 3 ] = xFact + (10* j);
+	positions[ u * 3 ] = xFact + (20* j);
 	positions[ u * 3 + 1 ] = z;
-	positions[ u * 3 + 2 ] = yFact + (10* i);
+	positions[ u * 3 + 2 ] = yFact + (20* i);
 	return positions;
 }
 
@@ -80,7 +79,7 @@ function get_fdf_file() {
 	var map = [],
 	file_fdf = document.getElementById( 'filefdf' ).value;
 	
-	file_fdf = file_fdf.replace(/  /g, " ");
+	file_fdf = file_fdf.replace(/  /g, " ");	
 	if (file_fdf.search("\n") !== -1)
 	{
 		var fdfline = file_fdf.split("\n");
@@ -105,8 +104,8 @@ function renderfdf() {
 	positions = new Float32Array( segments * 3 ),
 	colors = new Float32Array( segments * 3 ),
 	u = 0,
-	yFact = (10 * ((map.length-1) / 2)) * -1,
-	xFact = (10 * ((map[0].length-1) / 2)) * -1;
+	yFact = (20 * ((map.length-1) / 2)) * -1,
+	xFact = (20 * ((map[0].length-1) / 2)) * -1;
 
 	var i = 0, j = 0, dotmap = [];
 	for (i = 0; i < map.length; i++) {
