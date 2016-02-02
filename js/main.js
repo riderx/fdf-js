@@ -22,7 +22,7 @@ function init()
 	camera.lookAt(scene.position);	
 
 	renderer = new THREE.WebGLRenderer( {antialias:true, alpha:false} );
-	renderer.setClearColor(0x000000, 1);
+	renderer.setClearColor(0x000000, 0.9);
 	renderer.setSize(SCREEN_WIDTH - 22, SCREEN_HEIGHT - 38);
 
 	container = document.getElementById( 'ThreeJS' );
