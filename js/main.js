@@ -43,7 +43,7 @@ function deletefdf()
 		scene = new THREE.Scene();
 		scene.add(camera);
 		scene.add(new THREE.AxisHelper(100));
-		scene.fog = new THREE.FogExp2( 0x9999ff, 0.00025 );
+		scene.fog = new THREE.FogExp2( 0x9999ff, 0.00000001 );
 	}
 }
 
@@ -73,7 +73,7 @@ function hexToRGB(hex){
 */
 function add_positions (positions, u, xFact, yFact, j, i, z) {
 	positions[ u * 3 ] = xFact + (20* j);
-	positions[ u * 3 + 1 ] = z;
+	positions[ u * 3 + 1 ] = z*2;
 	positions[ u * 3 + 2 ] = yFact + (20* i);
 	return positions;
 }
