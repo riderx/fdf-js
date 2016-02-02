@@ -13,7 +13,7 @@ function init()
 {
 	"use strict";
 	var SCREEN_WIDTH = window.innerWidth, SCREEN_HEIGHT = window.innerHeight,
-	VIEW_ANGLE = 45, ASPECT = SCREEN_WIDTH / SCREEN_HEIGHT, NEAR = 0.01, FAR = 200000;
+	VIEW_ANGLE = 45, ASPECT = SCREEN_WIDTH / SCREEN_HEIGHT, NEAR = 1, FAR = 200000;
 
 	scene = new THREE.Scene();
 	camera = new THREE.PerspectiveCamera( VIEW_ANGLE, ASPECT, NEAR, FAR);
@@ -21,7 +21,7 @@ function init()
 	camera.position.set(0,150,400);
 	camera.lookAt(scene.position);	
 
-	renderer = new THREE.WebGLRenderer( {antialias:false, alpha:false} );
+	renderer = new THREE.WebGLRenderer( {antialias:true, alpha:false} );
 	renderer.setClearColor(0x000000, 1);
 	renderer.setSize(SCREEN_WIDTH - 22, SCREEN_HEIGHT - 38);
 
