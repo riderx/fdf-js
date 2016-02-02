@@ -75,9 +75,9 @@ function hexToRGB(hex){
 * Add new position in the scene 
 */
 function add_positions (positions, u, xFact, yFact, j, i, z) {
-	positions[ u * 3 ] = xFact + (20* j);
-	positions[ u * 3 + 1 ] = z*3;
-	positions[ u * 3 + 2 ] = yFact + (20* i);
+	positions[ u * 3 ] = xFact + (40* j);
+	positions[ u * 3 + 1 ] = z*10;
+	positions[ u * 3 + 2 ] = yFact + (40* i);
 	return positions;
 }
 
