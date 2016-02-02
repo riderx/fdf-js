@@ -23,7 +23,7 @@ function init()
 
 	renderer = new THREE.WebGLRenderer( {antialias:true, alpha:false} );
 	renderer.setClearColor(0x000000, 0.9);
-	renderer.setSize(SCREEN_WIDTH - 22, SCREEN_HEIGHT - 38);
+	renderer.setSize(SCREEN_WIDTH, SCREEN_HEIGHT - 38);
 
 	container = document.getElementById( 'ThreeJS' );
 	container.appendChild( renderer.domElement );
