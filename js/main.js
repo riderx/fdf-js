@@ -30,7 +30,8 @@ function init()
 	THREEx.WindowResize(renderer, camera);
 	controls = new THREE.OrbitControls( camera, renderer.domElement );
 	scene.add(new THREE.AxisHelper(100));
-	scene.fog = new THREE.FogExp2( 0x333333, 0.00006 );
+	  scene.fog = new THREE.FogExp2( 0x111111, 0.1 );
+	//scene.fog = new THREE.FogExp2( 0x333333, 0.00006 );
 }
 
 /*
