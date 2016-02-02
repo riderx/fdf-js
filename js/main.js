@@ -31,7 +31,7 @@ function init()
 	controls = new THREE.OrbitControls( camera, renderer.domElement );
 	scene.add(new THREE.AxisHelper(100));
 	// scene.fog = new THREE.FogExp2( 0x111111, 0.1 );
-	  scene.fog = new THREE.FogExp2( 0x111111, 0.001 );
+	  scene.fog = new THREE.FogExp2( 0x111111, 0.00001 );
 	//scene.fog = new THREE.FogExp2( 0x333333, 0.00006 );
 }
 
@@ -45,7 +45,7 @@ function deletefdf()
 		scene = new THREE.Scene();
 		scene.add(camera);
 		scene.add(new THREE.AxisHelper(100));
-		 scene.fog = new THREE.FogExp2( 0x111111, 0.001 );
+		 scene.fog = new THREE.FogExp2( 0x111111, 0.00001 );
 		//scene.fog = new THREE.FogExp2( 0x333333, 0.00007 );
 	//	scene.fog = new THREE.FogExp2( 0x9999ff, 0.00000001 );
 	}
