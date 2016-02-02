@@ -74,7 +74,7 @@ function hexToRGB(hex){
 */
 function add_positions (positions, u, xFact, yFact, j, i, z) {
 	positions[ u * 3 ] = xFact + (20* j);
-	positions[ u * 3 + 1 ] = z*20;
+	positions[ u * 3 + 1 ] = z*3;
 	positions[ u * 3 + 2 ] = yFact + (20* i);
 	return positions;
 }
