@@ -106,7 +106,6 @@ function get_fdf_file() {
 				map.push(fdfline[i].split(" "));
 			else {
 				console.log("ligne invalide n:" + i + " (pas d'espaces)");
-				map.push([]);
 			}
 			
 		}
