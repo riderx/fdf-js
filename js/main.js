@@ -13,7 +13,7 @@ function init()
 {
 	"use strict";
 	var SCREEN_WIDTH = window.innerWidth, SCREEN_HEIGHT = window.innerHeight,
-	VIEW_ANGLE = 45, ASPECT = SCREEN_WIDTH / SCREEN_HEIGHT, NEAR = 0.1, FAR = 20000;
+	VIEW_ANGLE = 45, ASPECT = SCREEN_WIDTH / SCREEN_HEIGHT, NEAR = 0.01, FAR = 200000;
 
 	scene = new THREE.Scene();
 	camera = new THREE.PerspectiveCamera( VIEW_ANGLE, ASPECT, NEAR, FAR);
