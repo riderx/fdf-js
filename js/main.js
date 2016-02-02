@@ -104,8 +104,11 @@ function get_fdf_file() {
 		for (var i = 0; i < fdfline.length; i++) {
 			if (fdfline[i].search(" ") !== -1)
 				map.push(fdfline[i].split(" "));
-			else
+			else {
 				console.log("ligne invalide n:" + i + " (pas d'espaces)");
+				map.push([]);
+			}
+			
 		}
 	}
 	else
