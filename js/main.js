@@ -32,9 +32,9 @@ function init()
 	scene.add(new THREE.AxisHelper(100));
 	// scene.fog = new THREE.FogExp2( 0x111111, 0.1 );
 	 // scene.fog = new THREE.FogExp2( 0x111111, 0.00001 );
-	//scene.fog = new THREE.FogExp2( 0x333333, 0.00006 );
-	var light = new THREE.AmbientLight( 0x404040 ); // soft white light
-	scene.add( light );
+	scene.fog = new THREE.FogExp2( 0x333333, 0.00007 );
+	//var light = new THREE.AmbientLight( 0x404040 ); // soft white light
+	// scene.add( light );
 }
 
 /*
@@ -46,11 +46,11 @@ function deletefdf()
 		delete scene;
 		scene = new THREE.Scene();
 		scene.add(camera);
-		var light = new THREE.AmbientLight( 0x404040 ); // soft white light
-		scene.add( light );
+		//var light = new THREE.AmbientLight( 0x404040 ); // soft white light
+		//scene.add( light );
 		scene.add(new THREE.AxisHelper(100));
 		// scene.fog = new THREE.FogExp2( 0x111111, 0.00001 );
-		//scene.fog = new THREE.FogExp2( 0x333333, 0.00007 );
+		scene.fog = new THREE.FogExp2( 0x333333, 0.00007 );
 	//	scene.fog = new THREE.FogExp2( 0x9999ff, 0.00000001 );
 	}
 }
