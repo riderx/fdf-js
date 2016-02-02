@@ -13,7 +13,7 @@ function init()
 {
 	"use strict";
 	var SCREEN_WIDTH = window.innerWidth, SCREEN_HEIGHT = window.innerHeight,
-	VIEW_ANGLE = 45, ASPECT = SCREEN_WIDTH / SCREEN_HEIGHT, NEAR = 0.1, FAR = 20000;
+	VIEW_ANGLE = 45, ASPECT = SCREEN_WIDTH / SCREEN_HEIGHT, NEAR = 1, FAR = 200000;
 
 	scene = new THREE.Scene();
 	camera = new THREE.PerspectiveCamera( VIEW_ANGLE, ASPECT, NEAR, FAR);
@@ -21,16 +21,16 @@ function init()
 	camera.position.set(0,150,400);
 	camera.lookAt(scene.position);	
 
-	renderer = new THREE.WebGLRenderer( {antialias:true, alpha:true} );
-	renderer.setClearColor(0x000000, 0.3);
-	renderer.setSize(SCREEN_WIDTH - 22, SCREEN_HEIGHT - 38);
+	renderer = new THREE.WebGLRenderer( {antialias:true, alpha:false} );
+	renderer.setClearColor(0x000000, 0.9);
+	renderer.setSize(SCREEN_WIDTH, SCREEN_HEIGHT - 38);
 
 	container = document.getElementById( 'ThreeJS' );
 	container.appendChild( renderer.domElement );
 	THREEx.WindowResize(renderer, camera);
 	controls = new THREE.OrbitControls( camera, renderer.domElement );
 	scene.add(new THREE.AxisHelper(100));
-	scene.fog = new THREE.FogExp2( 0x9999ff, 0.00025 );
+	scene.fog = new THREE.FogExp2( 0x333333, 0.00007 );
 }
 
 /*
@@ -43,7 +43,7 @@ function deletefdf()
 		scene = new THREE.Scene();
 		scene.add(camera);
 		scene.add(new THREE.AxisHelper(100));
-		scene.fog = new THREE.FogExp2( 0x9999ff, 0.00025 );
+		scene.fog = new THREE.FogExp2( 0x333333, 0.00007 );
 	}
 }
 
@@ -72,9 +72,9 @@ function hexToRGB(hex){
 * Add new position in the scene 
 */
 function add_positions (positions, u, xFact, yFact, j, i, z) {
-	positions[ u * 3 ] = xFact + (20* j);
-	positions[ u * 3 + 1 ] = z;
-	positions[ u * 3 + 2 ] = yFact + (20* i);
+	positions[ u * 3 ] = xFact + (40* j);
+	positions[ u * 3 + 1 ] = z*5;
+	positions[ u * 3 + 2 ] = yFact + (40* i);
 	return positions;
 }
 
@@ -83,7 +83,6 @@ function add_positions (positions, u, xFact, yFact, j, i, z) {
 */
 function add_colors (colors, u, hexColor) {
 	var clr = hexToRGB(hexColor);
-
 	colors[ u * 3 ] = clr.r;
 	colors[ u * 3 + 1 ] = clr.g;
 	colors[ u * 3 + 2 ] = clr.b;
@@ -96,7 +95,6 @@ function add_colors (colors, u, hexColor) {
 function get_fdf_file() {
 	var map = [],
 	file_fdf = document.getElementById( 'filefdf' ).value;
-	
 	file_fdf = file_fdf.replace(/  /g, " ");	
 	if (file_fdf.search("\n") !== -1)
 	{
@@ -104,8 +102,10 @@ function get_fdf_file() {
 		for (var i = 0; i < fdfline.length; i++) {
 			if (fdfline[i].search(" ") !== -1)
 				map.push(fdfline[i].split(" "));
-			else
+			else {
 				console.log("ligne invalide n:" + i + " (pas d'espaces)");
+			}
+			
 		}
 	}
 	else
@@ -118,7 +118,6 @@ function get_fdf_file() {
 * Push in the scene the new fdf 
 */
 function renderfdf() {
-
 	var map = get_fdf_file(),
 	material_color = new THREE.LineBasicMaterial({ vertexColors: THREE.VertexColors }),
 	segments = (map.length) * (map[0].length ) * 2,
@@ -128,7 +127,6 @@ function renderfdf() {
 	u = 0,
 	yFact = (20 * ((map.length-1) / 2)) * -1,
 	xFact = (20 * ((map[0].length-1) / 2)) * -1;
-
 	var i = 0, j = 0, dotmap = [];
 	for (i = 0; i < map.length; i++) {
 		if (i % 2 === 0) {
@@ -163,11 +161,11 @@ function renderfdf() {
 	for (i = 0; i < map[1].length; i++) {
 		if (i % 2 === 0) {
 			for (j = map.length - 1; j >= 0; j--) {
-				if (map[j][i].search(",") === -1) {
+				if (map[j][i] && map[j][i].search(",") === -1) {
 					add_positions(positions, u, xFact, yFact, i, j, map[j][i]);
 					add_colors(colors, u, "0x0000ff");
 				}
-				else {
+				else if (map[j][i]) {
 					dotmap = map[j][i].split(",");
 					add_positions(positions, u, xFact, yFact, i, j, dotmap[0]);
 					add_colors(colors, u, dotmap[1]);
@@ -177,11 +175,11 @@ function renderfdf() {
 		}
 		else {
 			for (j = 0; j < map.length; j++) {
-				if (map[j][i].search(",") === -1) {
+				if (map[j][i] && map[j][i].search(",") === -1) {
 					add_positions(positions, u, xFact, yFact, i, j, map[j][i]);
 					add_colors(colors, u, "0x0000ff");
 				}
-				else {
+				else if (map[j][i]){
 					dotmap = map[j][i].split(",");
 					add_positions(positions, u, xFact, yFact, i, j, dotmap[0]);
 					add_colors(colors, u, dotmap[1]);
