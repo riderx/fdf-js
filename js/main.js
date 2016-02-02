@@ -30,11 +30,7 @@ function init()
 	THREEx.WindowResize(renderer, camera);
 	controls = new THREE.OrbitControls( camera, renderer.domElement );
 	scene.add(new THREE.AxisHelper(100));
-	// scene.fog = new THREE.FogExp2( 0x111111, 0.1 );
-	 // scene.fog = new THREE.FogExp2( 0x111111, 0.00001 );
 	scene.fog = new THREE.FogExp2( 0x333333, 0.00007 );
-	//var light = new THREE.AmbientLight( 0x404040 ); // soft white light
-	// scene.add( light );
 }
 
 /*
@@ -46,12 +42,8 @@ function deletefdf()
 		delete scene;
 		scene = new THREE.Scene();
 		scene.add(camera);
-		//var light = new THREE.AmbientLight( 0x404040 ); // soft white light
-		//scene.add( light );
 		scene.add(new THREE.AxisHelper(100));
-		// scene.fog = new THREE.FogExp2( 0x111111, 0.00001 );
 		scene.fog = new THREE.FogExp2( 0x333333, 0.00007 );
-	//	scene.fog = new THREE.FogExp2( 0x9999ff, 0.00000001 );
 	}
 }
 
@@ -91,7 +83,6 @@ function add_positions (positions, u, xFact, yFact, j, i, z) {
 */
 function add_colors (colors, u, hexColor) {
 	var clr = hexToRGB(hexColor);
-
 	colors[ u * 3 ] = clr.r;
 	colors[ u * 3 + 1 ] = clr.g;
 	colors[ u * 3 + 2 ] = clr.b;
@@ -104,7 +95,6 @@ function add_colors (colors, u, hexColor) {
 function get_fdf_file() {
 	var map = [],
 	file_fdf = document.getElementById( 'filefdf' ).value;
-	
 	file_fdf = file_fdf.replace(/  /g, " ");	
 	if (file_fdf.search("\n") !== -1)
 	{
@@ -128,7 +118,6 @@ function get_fdf_file() {
 * Push in the scene the new fdf 
 */
 function renderfdf() {
-
 	var map = get_fdf_file(),
 	material_color = new THREE.LineBasicMaterial({ vertexColors: THREE.VertexColors }),
 	segments = (map.length) * (map[0].length ) * 2,
@@ -138,7 +127,6 @@ function renderfdf() {
 	u = 0,
 	yFact = (20 * ((map.length-1) / 2)) * -1,
 	xFact = (20 * ((map[0].length-1) / 2)) * -1;
-
 	var i = 0, j = 0, dotmap = [];
 	for (i = 0; i < map.length; i++) {
 		if (i % 2 === 0) {
