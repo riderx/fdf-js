@@ -163,11 +163,11 @@ function renderfdf() {
 	for (i = 0; i < map[1].length; i++) {
 		if (i % 2 === 0) {
 			for (j = map.length - 1; j >= 0; j--) {
-				if (map[j][i].search(",") === -1) {
+				if (map[j][i] && map[j][i].search(",") === -1) {
 					add_positions(positions, u, xFact, yFact, i, j, map[j][i]);
 					add_colors(colors, u, "0x0000ff");
 				}
-				else {
+				else if (map[j][i]) {
 					dotmap = map[j][i].split(",");
 					add_positions(positions, u, xFact, yFact, i, j, dotmap[0]);
 					add_colors(colors, u, dotmap[1]);
@@ -177,11 +177,11 @@ function renderfdf() {
 		}
 		else {
 			for (j = 0; j < map.length; j++) {
-				if (map[j][i].search(",") === -1) {
+				if (map[j][i] && map[j][i].search(",") === -1) {
 					add_positions(positions, u, xFact, yFact, i, j, map[j][i]);
 					add_colors(colors, u, "0x0000ff");
 				}
-				else {
+				else if (map[j][i]){
 					dotmap = map[j][i].split(",");
 					add_positions(positions, u, xFact, yFact, i, j, dotmap[0]);
 					add_colors(colors, u, dotmap[1]);
