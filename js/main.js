@@ -21,7 +21,7 @@ function init()
 	camera.position.set(0,150,400);
 	camera.lookAt(scene.position);	
 
-	renderer = new THREE.WebGLRenderer( {antialias:true, alpha:true} );
+	renderer = new THREE.WebGLRenderer( {antialias:false, alpha:false} );
 	renderer.setClearColor(0x000000, 1);
 	renderer.setSize(SCREEN_WIDTH - 22, SCREEN_HEIGHT - 38);
 
