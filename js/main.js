@@ -6,6 +6,9 @@ windowHalfY = window.innerHeight / 2;
 init();
 animate();
 
+/*
+* Init vars for Threejs 
+*/
 function init()
 {
 	"use strict";
@@ -30,6 +33,9 @@ function init()
 	scene.fog = new THREE.FogExp2( 0x9999ff, 0.00025 );
 }
 
+/*
+* Clean a scene 
+*/
 function deletefdf()
 {
 	if (scene) {
@@ -41,6 +47,9 @@ function deletefdf()
 	}
 }
 
+/*
+* Transform hexadecimal color to RGB color 
+*/
 function hexToRGB(hex){
 	if (hex.search("0x") !== -1)
 		hex = hex.replace("0x", "");
@@ -59,6 +68,9 @@ function hexToRGB(hex){
 	return {r: R,g: G,b: B};
 }
 
+/*
+* Add new position in the scene 
+*/
 function add_positions (positions, u, xFact, yFact, j, i, z) {
 	positions[ u * 3 ] = xFact + (20* j);
 	positions[ u * 3 + 1 ] = z;
@@ -66,6 +78,9 @@ function add_positions (positions, u, xFact, yFact, j, i, z) {
 	return positions;
 }
 
+/*
+* Add specifiq color for position in the scene 
+*/
 function add_colors (colors, u, hexColor) {
 	var clr = hexToRGB(hexColor);
 
@@ -75,6 +90,9 @@ function add_colors (colors, u, hexColor) {
 	return colors;
 }
 
+/*
+* Parse a fdf file 
+*/
 function get_fdf_file() {
 	var map = [],
 	file_fdf = document.getElementById( 'filefdf' ).value;
@@ -95,6 +113,10 @@ function get_fdf_file() {
 	return map;
 }
 
+
+/*
+* Push in the scene the new fdf 
+*/
 function renderfdf() {
 
 	var map = get_fdf_file(),
@@ -174,6 +196,10 @@ function renderfdf() {
 	scene.add( mesh );
 }
 
+
+/*
+* Animate the scene 
+*/
 function animate() 
 {
 	requestAnimationFrame( animate );
@@ -181,12 +207,18 @@ function animate()
 	update();
 }
 
+/*
+* Update the scene 
+*/
 function update()
 {
 	var delta = clock.getDelta(); 
 	controls.update();
 }
 
+/*
+* Render the scene 
+*/
 function render() 
 {	
 	renderer.render( scene, camera );
